@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北白川玉子 - 角色介绍</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&amp;family=Quicksand:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --kawaii-pink: #ffb3d1;
+            --kawaii-light-pink: #ffc7e0;
+            --kawaii-cream: #fff5f7;
+            --kawaii-peach: #ffcccb;
+            --kawaii-lavender: #e6e6fa;
+            --kawaii-mint: #f0fff0;
+            --text-dark: #4a4a4a;
+            --text-medium: #666666;
+            --text-light: #888888;
+            --white: #ffffff;
+            --kawaii-shadow: rgba(255, 179, 209, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, var(--kawaii-cream) 0%, var(--kawaii-light-pink) 30%, var(--kawaii-peach) 70%, var(--kawaii-lavender) 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 可爱的浮动装饰元素 */
+        .kawaii-decorations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .kawaii-element {
+            position: absolute;
+            opacity: 0.7;
+            animation: kawaii-float 6s ease-in-out infinite;
+        }
+
+        .heart {
+            color: var(--kawaii-pink);
+            font-size: 20px;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 16px;
+        }
+
+        .flower {
+            color: var(--kawaii-peach);
+            font-size: 18px;
+        }
+
+        @keyframes kawaii-float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(5deg); }
+            66% { transform: translateY(5px) rotate(-3deg); }
+        }
+
+        /* 卡哇伊卡片效果 */
+        .kawaii-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--kawaii-light-pink);
+            border-radius: 25px;
+            box-shadow: 0 8px 25px var(--kawaii-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kawaii-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--kawaii-pink), var(--kawaii-peach), var(--kawaii-lavender));
+            border-radius: 25px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .kawaii-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px var(--kawaii-shadow);
+        }
+
+        .kawaii-card:hover::before {
+            opacity: 1;
+        }
+
+        /* 标题优化 - 确保清晰可读 */
+        .kawaii-title {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: 3px solid var(--kawaii-pink);
+            box-shadow: 0 5px 15px var(--kawaii-shadow);
+            text-shadow: none;
+            display: inline-block;
+            position: relative;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .kawaii-title::before {
+            content: '💕';
+            position: absolute;
+            left: -10px;
+            top: -5px;
+            font-size: 30px;
+            animation: pulse-heart 2s ease-in-out infinite;
+        }
+
+        .kawaii-title::after {
+            content: '💕';
+            position: absolute;
+            right: -10px;
+            top: -5px;
+            font-size: 30px;
+            animation: pulse-heart 2s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes pulse-heart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* 年糕装饰 - 更可爱版本 */
+        .kawaii-mochi {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(145deg, var(--kawaii-pink), var(--kawaii-light-pink));
+            border-radius: 50%;
+            position: relative;
+            display: inline-block;
+            margin: 0 15px;
+            box-shadow: 0 5px 15px var(--kawaii-shadow);
+            animation: kawaii-bounce 3s ease-in-out infinite;
+        }
+
+        .kawaii-mochi::before {
+            content: '😊';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+        }
+
+        @keyframes kawaii-bounce {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.1); }
+        }
+
+        /* 角色图片优化 */
+        .kawaii-image {
+            border-radius: 25px;
+            border: 4px solid var(--kawaii-pink);
+            box-shadow: 0 10px 25px var(--kawaii-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kawaii-image::before {
+            content: '✨';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 25px;
+            animation: twinkle 2s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .kawaii-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px var(--kawaii-shadow);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; transform: rotate(0deg); }
+            50% { opacity: 0.5; transform: rotate(180deg); }
+        }
+
+        /* 信息卡片 - 可爱风格 */
+        .kawaii-info-card {
+            background: var(--white);
+            border: 2px solid var(--kawaii-light-pink);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 6px 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .kawaii-info-card::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 20px;
+            width: 15px;
+            height: 15px;
+            background: var(--kawaii-pink);
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px var(--white);
+        }
+
+        .kawaii-info-card:hover {
+            transform: translateX(10px);
+            border-color: var(--kawaii-pink);
+            box-shadow: 0 5px 15px var(--kawaii-shadow);
+        }
+
+        /* 性格特点卡片 */
+        .personality-kawaii {
+            background: var(--white);
+            border: 2px solid var(--kawaii-light-pink);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 6px 0;
+            box-shadow: 0 5px 15px var(--kawaii-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .personality-kawaii::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 15px solid var(--kawaii-pink);
+        }
+
+        .personality-kawaii:hover {
+            transform: translateY(-5px);
+            border-color: var(--kawaii-pink);
+            box-shadow: 0 10px 25px var(--kawaii-shadow);
+        }
+
+        /* 引用框 - 可爱版本 */
+        .kawaii-quote {
+            background: linear-gradient(135deg, var(--kawaii-pink), var(--kawaii-light-pink));
+            color: var(--white);
+            border-radius: 30px;
+            position: relative;
+            box-shadow: 0 10px 25px var(--kawaii-shadow);
+            border: 3px solid var(--white);
+        }
+
+        .kawaii-quote::before {
+            content: '💭';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 40px;
+            animation: float-cloud 3s ease-in-out infinite;
+        }
+
+        @keyframes float-cloud {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* 滚动指示器 - 可爱版本 */
+        .kawaii-scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--kawaii-pink), var(--kawaii-peach), var(--kawaii-lavender));
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 1000;
+            transition: transform 0.1s ease;
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* 响应式优化 */
+        @media (max-width: 768px) {
+            .kawaii-mochi {
+                width: 40px;
+                height: 40px;
+                margin: 0 10px;
+            }
+
+            .kawaii-title {
+                padding: 15px 30px;
+                font-size: 1.5rem;
+            }
+
+            .kawaii-card {
+                margin: 4px;
+                padding: 20px;
+            }
+
+            .kawaii-info-card {
+                margin: 4px 0;
+            }
+
+            .personality-kawaii {
+                margin: 4px 0;
+            }
+
+            .section-title {
+                margin-bottom: 12px;
+            }
+        }
+
+        /* 文字清晰度确保 */
+        .text-readable {
+            color: var(--text-dark);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .text-readable-light {
+            color: var(--text-medium);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        /* 浮动动画 - 轻柔版本 */
+        .kawaii-float {
+            animation: kawaii-gentle-float 4s ease-in-out infinite;
+        }
+
+        @keyframes kawaii-gentle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* 淡入动画 */
+        .fade-in-kawaii {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-kawaii.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 标题可读性增强 */
+        .readable-title {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text-dark);
+            border: 3px solid var(--kawaii-pink);
+            border-radius: 50px;
+            padding: 15px 30px;
+            display: inline-block;
+            box-shadow: 0 5px 20px var(--kawaii-shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-dark);
+            border-radius: 25px;
+            padding: 10px 20px;
+            display: inline-block;
+            border: 2px solid var(--kawaii-light-pink);
+            margin-bottom: 12px;
+        }
+
+        /* 导航按钮样式 */
+        .kawaii-title a:hover {
+            color: var(--kawaii-pink);
+            transform: translateY(-3px) scale(1.01);
+        }
+
+        /* 侧边导航栏样式 */
+        .sidebar {
+            position: fixed;
+            top: 15%;
+            left: 0px;
+            transform: translateY(-50%) translateX(-30px);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .sidebar-show {
+            transform: translateY(-50%) translateX(0);
+            opacity: 1;
+        }
+
+        /* 侧边导航栏卡片样式 */
+        .sidebar .kawaii-card {
+            border-radius: 15px;
+            overflow: visible;
+        }
+
+        .sidebar .kawaii-title {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .sidebar .kawaii-title::before,
+        .sidebar .kawaii-title::after {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="kawaii-scroll-indicator" id="scrollIndicator"></div>
+    <div class="kawaii-decorations" id="decorations"></div>
+
+    <!-- 头部区域 -->
+    <div class="w-full py-8 text-center relative z-10">
+        <div class="inline-flex items-center mb-6">
+            <div class="kawaii-mochi kawaii-float"></div>
+            <h1 class="kawaii-title text-4xl md:text-5xl font-bold">《玉子市场》角色介绍</h1>
+            <div class="kawaii-mochi kawaii-float" style="animation-delay: 0.5s;"></div>
+        </div>
+        <p class="readable-title text-lg font-medium">
+            <i class="fas fa-heart text-pink-400 mr-2"></i>
+            温馨治愈的日常系动画世界
+            <i class="fas fa-heart text-pink-400 ml-2"></i>
+        </p>
+    </div>
+
+    <!-- 侧边导航区域 -->
+    <div class="sidebar">
+        <div class="kawaii-card p-4">
+            <div class="grid grid-cols-1 gap-4">
+                <a href="#personality-section" class="kawaii-title text-2xl font-bold">性格特点</a>
+                <a href="#background-section" class="kawaii-title text-2xl font-bold">作品背景</a>
+                <a href="#quotes-section" class="kawaii-title text-2xl font-bold">经典语录</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-4 max-w-7xl relative z-10">
+        <!-- 主角色卡片 -->
+        <div class="kawaii-card p-8 mb-6 fade-in-kawaii">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- 角色图片 -->
+                <div class="text-center">
+                    <div class="kawaii-image inline-block">
+                        <img src="images/tamako_character.jpg" alt="北白川玉子" class="w-full max-w-sm mx-auto rounded-2xl">
+                    </div>
+                </div>
+                
+                <!-- 基本信息 -->
+                <div class="space-y-8">
+                    <div class="text-center lg:text-left">
+                        <h2 class="text-5xl font-bold text-readable mb-4" style="color: var(--kawaii-pink);">北白川玉子</h2>
+                        <p class="text-2xl text-readable-light font-medium mb-2">きたしらかわ たまこ</p>
+                        <div class="readable-title text-lg">《玉子市场》主角 ⭐</div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="kawaii-info-card">
+                            <div class="flex items-center">
+                                <i class="fas fa-birthday-cake text-pink-400 mr-3 text-xl"></i>
+                                <span class="font-semibold text-readable mr-2">年龄：</span>
+                                <span class="text-readable-light">高中一年级</span>
+                            </div>
+                        </div>
+                        <div class="kawaii-info-card">
+                            <div class="flex items-center">
+                                <i class="fas fa-home text-pink-400 mr-3 text-xl"></i>
+                                <span class="font-semibold text-readable mr-2">家庭：</span>
+                                <span class="text-readable-light">经营传统年糕店"たまや"</span>
+                            </div>
+                        </div>
+                        <div class="kawaii-info-card">
+                            <div class="flex items-center">
+                                <i class="fas fa-heart text-pink-400 mr-3 text-xl"></i>
+                                <span class="font-semibold text-readable mr-2">性格：</span>
+                                <span class="text-readable-light">活泼开朗、天真善良、充满活力</span>
+                            </div>
+                        </div>
+                        <div class="kawaii-info-card">
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-pink-400 mr-3 text-xl"></i>
+                                <span class="font-semibold text-readable mr-2">爱好：</span>
+                                <span class="text-readable-light">对年糕有深深的热爱</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 性格特点 -->
+        <div class="grid lg:grid-cols-2 gap-8 mb-6" id="personality-section">
+            <div class="kawaii-card p-8 fade-in-kawaii">
+                <h3 class="section-title text-2xl font-bold mb-6">
+                    <i class="fas fa-seedling mr-3 text-pink-400"></i> 性格特点
+                </h3>
+                <div class="space-y-4">
+                    <div class="personality-kawaii">
+                        <h4 class="font-bold text-readable mb-3 text-xl flex items-center">
+                            <i class="fas fa-smile mr-2 text-pink-400"></i> 活泼开朗
+                        </h4>
+                        <p class="text-readable-light leading-relaxed">玉子总是保持着积极乐观的态度，她的笑容能够感染身边的每一个人，是兔山商店街的开心果。无论遇到什么困难，她都能以最阳光的心态去面对。</p>
+                    </div>
+                    <div class="personality-kawaii">
+                        <h4 class="font-bold text-readable mb-3 text-xl flex items-center">
+                            <i class="fas fa-dove mr-2 text-pink-400"></i> 天真善良
+                        </h4>
+                        <p class="text-readable-light leading-relaxed">玉子拥有一颗纯真的心，总是以善意对待他人，即使面对陌生的说话鸟也能很快接受。她的善良感动着身边的每一个人。</p>
+                    </div>
+                    <div class="personality-kawaii">
+                        <h4 class="font-bold text-readable mb-3 text-xl flex items-center">
+                            <i class="fas fa-bolt mr-2 text-pink-400"></i> 充满活力
+                        </h4>
+                        <p class="text-readable-light leading-relaxed">无论是在学校还是在家里帮忙，玉子都展现出无穷的活力和热情。她的活力能够带动整个商店街的氛围。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kawaii-card p-8 fade-in-kawaii">
+                <h3 class="section-title text-2xl font-bold mb-6">
+                    <i class="fas fa-cookie-bite mr-3 text-pink-400"></i> 年糕的热爱
+                </h3>
+                <div class="personality-kawaii mb-6">
+                    <div class="kawaii-image mb-4">
+                        <img src="images/mochi_sweets.jpg" alt="年糕" class="w-full h-48 object-cover rounded-xl">
+                    </div>
+                    <p class="text-readable-light leading-relaxed">
+                        作为年糕店老板的女儿，玉子从小就被年糕包围长大。她不仅深爱着年糕的味道，
+                        更是将年糕视为连接人与人之间情感的桥梁。在她看来，年糕不只是食物，
+                        更是承载着家庭传统和温暖回忆的珍贵存在。每一个年糕都蕴含着爱与温暖。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 作品背景 -->
+        <div class="kawaii-card p-8 mb-6 fade-in-kawaii" id="background-section">
+            <h3 class="section-title text-3xl font-bold mb-8 text-center">
+                <i class="fas fa-torii-gate mr-3 text-pink-400"></i> 《玉子市场》作品背景 <i class="fas fa-torii-gate ml-3 text-pink-400"></i>
+            </h3>
+            
+            <div class="grid lg:grid-cols-2 gap-10">
+                <div>
+                    <div class="kawaii-image mb-6">
+                        <img src="images/shopping_street.jpg" alt="兔山商店街" class="w-full rounded-2xl">
+                    </div>
+                    <div class="personality-kawaii">
+                        <h4 class="font-bold text-readable mb-3 text-xl flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-pink-400"></i> 兔山商店街
+                        </h4>
+                        <p class="text-readable-light leading-relaxed">
+                            故事发生在充满温情的兔山商店街，这里有着浓浓的人情味。
+                            玉子的家族年糕店"たまや"就坐落在这条热闹的商店街上，
+                            街坊邻里们都是玉子从小到大的朋友。这里充满了日式传统文化的魅力。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="personality-kawaii">
+                        <h4 class="font-bold text-readable mb-4 text-xl flex items-center">
+                            <i class="fas fa-info-circle mr-2 text-pink-400"></i> 制作信息
+                        </h4>
+                        <div class="space-y-3 text-readable-light">
+                            <p class="flex items-center"><i class="fas fa-building mr-3 text-pink-400"></i><span class="font-medium">制作公司：</span>京都动画 (Kyoto Animation)</p>
+                            <p class="flex items-center"><i class="fas fa-calendar mr-3 text-pink-400"></i><span class="font-medium">播出时间：</span>2013年</p>
+                            <p class="flex items-center"><i class="fas fa-tags mr-3 text-pink-400"></i><span class="font-medium">类型：</span>日常系、治愈系动画</p>
+                            <p class="flex items-center"><i class="fas fa-film mr-3 text-pink-400"></i><span class="font-medium">集数：</span>12集 + 电影版《玉子爱情故事》</p>
+                        </div>
+                    </div>
+                    
+                    <div class="personality-kawaii">
+                        <h4 class="font-bold text-readable mb-3 text-xl flex items-center">
+                            <i class="fas fa-book mr-2 text-pink-400"></i> 故事主题
+                        </h4>
+                        <p class="text-readable-light leading-relaxed">
+                            《玉子市场》描绘了在传统商店街中成长的高中生玉子的日常生活。
+                            作品以温馨的笔触展现了家庭、友情和成长的美好，
+                            是一部充满治愈力量的日常系动画。每一个细节都散发着温暖的人情味。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 经典语录 -->
+        <div class="kawaii-quote p-10 mb-6 text-center fade-in-kawaii" id="quotes-section">
+            <h3 class="text-3xl font-bold mb-8 text-white">
+                <i class="fas fa-quote-left mr-3"></i> 经典语录 <i class="fas fa-quote-right ml-3"></i>
+            </h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="personality-kawaii bg-white bg-opacity-90">
+                    <p class="text-2xl font-bold mb-4 text-readable">"年糕能让人变得幸福！"</p>
+                    <p class="text-readable-light">- 体现了玉子对年糕的纯真热爱</p>
+                </div>
+                <div class="personality-kawaii bg-white bg-opacity-90">
+                    <p class="text-2xl font-bold mb-4 text-readable">"大家一起的话，什么都能做到！"</p>
+                    <p class="text-readable-light">- 展现了玉子积极向上的人生态度</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 海报展示 -->
+        <div class="text-center mb-6 fade-in-kawaii">
+            <div class="kawaii-image inline-block">
+                <img src="images/tamako_market_poster.webp" alt="玉子市场海报" class="mx-auto max-w-md rounded-2xl">
+            </div>
+        </div>
+
+        <!-- 页面底部 -->
+        <div class="text-center py-6 fade-in-kawaii">
+            <div class="inline-flex items-center space-x-6 mb-6">
+                <div class="kawaii-mochi kawaii-float"></div>
+                <div class="readable-title text-xl font-medium">
+                    感谢京都动画为我们带来如此温暖治愈的作品
+                </div>
+                <div class="kawaii-mochi kawaii-float" style="animation-delay: 1s;"></div>
+            </div>
+            <div class="readable-title">
+                <i class="fas fa-heart text-pink-400 mr-2"></i>
+                让我们永远记住这份美好与温暖
+                <i class="fas fa-heart text-pink-400 ml-2"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 创建可爱装饰元素
+            createKawaiiDecorations();
+            
+            // 初始化滚动指示器
+            updateScrollIndicator();
+            
+            // 初始化滚动动画
+            initScrollAnimations();
+            
+            // 添加滚动事件监听
+            window.addEventListener('scroll', function() {
+                updateScrollIndicator();
+            });
+            
+            // 添加交互效果
+            addKawaiiInteractions();
+
+            // 显示侧边栏
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.add('sidebar-show');
+        });
+
+        // 创建可爱装饰元素
+        function createKawaiiDecorations() {
+            const decorationsContainer = document.getElementById('decorations');
+            const decorations = ['💖', '⭐', '🌸', '💕', '✨', '🌺', '💝', '🎀'];
+            const decorationCount = window.innerWidth < 768 ? 15 : 25;
+            
+            for (let i = 0; i < decorationCount; i++) {
+                const decoration = document.createElement('div');
+                decoration.classList.add('kawaii-element');
+                decoration.textContent = decorations[Math.floor(Math.random() * decorations.length)];
+                
+                // 随机位置
+                decoration.style.left = Math.random() * 100 + '%';
+                decoration.style.top = Math.random() * 100 + '%';
+                decoration.style.animationDelay = Math.random() * 6 + 's';
+                decoration.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                decoration.style.fontSize = (Math.random() * 10 + 15) + 'px';
+                
+                decorationsContainer.appendChild(decoration);
+            }
+        }
+
+        // 更新滚动指示器
+        function updateScrollIndicator() {
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            const scrollTop = window.pageYOffset;
+            const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = scrollTop / documentHeight;
+            
+            scrollIndicator.style.transform = `scaleX(${scrollPercent})`;
+        }
+
+        // 初始化滚动动画
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.fade-in-kawaii').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // 添加可爱交互效果
+        function addKawaiiInteractions() {
+            // 卡片悬停效果
+            const cards = document.querySelectorAll('.kawaii-card, .personality-kawaii, .kawaii-info-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    // 添加可爱的悬停效果
+                    this.style.transform = 'translateY(-3px) scale(1.01)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
+
+            // 导航链接点击效果
+            const links = document.querySelectorAll('.sidebar .kawaii-title a');
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    // 阻止默认行为以实现平滑滚动
+                    event.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+
+                    // 重置所有链接样式
+                    links.forEach(l => l.style.transform = '');
+                    links.forEach(l => l.style.color = '');
+
+                    // 选中当前链接样式
+                    this.style.transform = 'translateY(-3px) scale(1.01)';
+                    this.style.color = 'var(--kawaii-pink)';
+                });
+            });
+
+            // 图片点击放大效果
+            const images = document.querySelectorAll('.kawaii-image img');
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    if (!img.classList.contains('enlarged')) {
+                        img.style.position = 'fixed';
+                        img.style.top = '50%';
+                        img.style.left = '50%';
+                        img.style.transform = 'translate(-50%, -50%) scale(1.3)';
+                        img.style.zIndex = '9999';
+                        img.style.maxWidth = '90vw';
+                        img.style.maxHeight = '90vh';
+                        img.style.borderRadius = '25px';
+                        img.style.border = '4px solid var(--kawaii-pink)';
+                        img.classList.add('enlarged');
+                        
+                        // 创建背景遮罩
+                        const overlay = document.createElement('div');
+                        overlay.style.position = 'fixed';
+                        overlay.style.top = '0';
+                        overlay.style.left = '0';
+                        overlay.style.width = '100%';
+                        overlay.style.height = '100%';
+                        overlay.style.backgroundColor = 'rgba(255, 179, 209, 0.9)';
+                        overlay.style.zIndex = '9998';
+                        overlay.style.cursor = 'pointer';
+                        overlay.style.backdropFilter = 'blur(10px)';
+                        overlay.classList.add('image-overlay');
+                        document.body.appendChild(overlay);
+                        
+                        // 点击遮罩关闭
+                        overlay.addEventListener('click', function() {
+                            img.style.position = '';
+                            img.style.top = '';
+                            img.style.left = '';
+                            img.style.transform = '';
+                            img.style.zIndex = '';
+                            img.style.maxWidth = '';
+                            img.style.maxHeight = '';
+                            img.style.borderRadius = '';
+                            img.style.border = '';
+                            img.classList.remove('enlarged');
+                            overlay.remove();
+                        });
+                    }
+                });
+            });
+
+            // 年糕装饰点击效果
+            const mochis = document.querySelectorAll('.kawaii-mochi');
+            mochis.forEach(mochi => {
+                mochi.addEventListener('click', function() {
+                    // 创建飞出的爱心
+                    for (let i = 0; i < 5; i++) {
+                        const heart = document.createElement('div');
+                        heart.textContent = '💕';
+                        heart.style.position = 'absolute';
+                        heart.style.left = '50%';
+                        heart.style.top = '50%';
+                        heart.style.transform = 'translate(-50%, -50%)';
+                        heart.style.pointerEvents = 'none';
+                        heart.style.fontSize = '20px';
+                        heart.style.zIndex = '1000';
+                        
+                        this.appendChild(heart);
+                        
+                        // 动画
+                        const angle = (i * 72) * Math.PI / 180;
+                        const distance = 50;
+                        const endX = Math.cos(angle) * distance;
+                        const endY = Math.sin(angle) * distance;
+                        
+                        heart.animate([
+                            { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                            { transform: `translate(calc(-50% + ${endX}px), calc(-50% + ${endY}px)) scale(0)`, opacity: 0 }
+                        ], {
+                            duration: 1000,
+                            easing: 'ease-out'
+                        }).onfinish = () => heart.remove();
+                    }
+                });
+            });
+        }
+
+        // 响应式处理
+        function handleResize() {
+            const decorationsContainer = document.getElementById('decorations');
+            decorationsContainer.innerHTML = '';
+            createKawaiiDecorations();
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        // 页面可见性变化时暂停/恢复动画
+        document.addEventListener('visibilitychange', function() {
+            const animations = document.querySelectorAll('.kawaii-float, .kawaii-mochi');
+            animations.forEach(el => {
+                if (document.hidden) {
+                    el.style.animationPlayState = 'paused';
+                } else {
+                    el.style.animationPlayState = 'running';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
